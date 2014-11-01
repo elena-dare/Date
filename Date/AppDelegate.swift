@@ -16,6 +16,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		//Demonstrate that we can call a type method
+		//even when no objects of the type currently exist.
+		println("A year has \(Date.yearLength()) months.");
+		
+		//Call the init method that takes no parameters.
+		var today: Date = Date();
+		
+		//Two ways to do print the same string.
+		println("Today is \(today.description).");
+		println("Today is \(today).");
+		
+		println("Today is day number \(today.day) out of \(today.monthLength()) in month number \(today.month).");
+		
+		//Also calls the willSet and didSet property observers (if any) for the day property.
+		today.day = 1;
+		
+		//Move the object one day forward.
+		today.next();
+		println("The second day of this month is \(today).");
+		
+		today.day = 1;
+		
+		//Move the object one day backward.
+		today.prev();
+		println("The day before today was \(today).");
+		
+		//Call the init method that takes three parameters.
+		var independenceDay: Date = Date(month: 7, day: 4, year: 1776);
+		println("Independence Day was \(independenceDay).");
+		
+		//Move the object one month forward.
+		independenceDay.next(independenceDay.monthLength());
+		println("America was one month old on \(independenceDay).");
+		
+		//Move the object one month backward.
+		independenceDay.prev(independenceDay.monthLength());
+		println("America was newborn on \(independenceDay).");
+		
+		
 		return true
 	}
 
