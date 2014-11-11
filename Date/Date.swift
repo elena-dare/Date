@@ -99,21 +99,18 @@ class Date: NSObject {
 		
 		if day > 1 {
 			--day;
-			return;
+			
+		} else {
+			if month > 1 {
+				--month;
+			} else {
+				month = Date.yearLength();
+				--year;
+			}
+			day = monthLength();
 		}
 		
-		--month;
-		day = monthLength();
-		++month;
-		if month > 1 {
-			--month;
-			return;
-		}
-		
-		month = 12;
-		--year;
-		
-		}
+	}
 	
 	/*
 	Advance this Date many days into the future.
